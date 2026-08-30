@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWebFramework.Core", "SeleniumWebFramework.Core\SeleniumWebFramework.Core.csproj", "{180BEDD2-6403-46CE-860F-6E02545D79D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWebFramework.Business", "SeleniumWebFramework.Business\SeleniumWebFramework.Business.csproj", "{367D0ED5-E2EF-4267-A495-ACA06E7AD49A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumWebFramework.Tests", "SeleniumWebFramework.Tests\SeleniumWebFramework.Tests.csproj", "{D489AA9D-36B3-497D-8F63-AB7A622DF9FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{180BEDD2-6403-46CE-860F-6E02545D79D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180BEDD2-6403-46CE-860F-6E02545D79D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180BEDD2-6403-46CE-860F-6E02545D79D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180BEDD2-6403-46CE-860F-6E02545D79D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367D0ED5-E2EF-4267-A495-ACA06E7AD49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367D0ED5-E2EF-4267-A495-ACA06E7AD49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367D0ED5-E2EF-4267-A495-ACA06E7AD49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367D0ED5-E2EF-4267-A495-ACA06E7AD49A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D489AA9D-36B3-497D-8F63-AB7A622DF9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D489AA9D-36B3-497D-8F63-AB7A622DF9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D489AA9D-36B3-497D-8F63-AB7A622DF9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D489AA9D-36B3-497D-8F63-AB7A622DF9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

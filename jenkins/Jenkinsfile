@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Start Selenium Grid') {
+            steps {
+                // Start Selenium Grid inside DinD using a fixed project name
+                sh 'docker compose -p selenium-grid -f docker-compose.selenium.yml up -d'
+
+                // Wait until the Grid is ready before running tests
+                sh '''
+                    echo "Waiting for Selenium Grid to be ready..."
+                    docker run --rm --network test-net curlimages/curl:latest \
+                      sh -c 'until curl -s http://selenium-hub:4444/status | grep "\\"ready\\": true"; do sleep 2; done'
+                    echo "Selenium Grid is ready!"
+                '''
+            }
+        }
+
+        stage('E2E Tests') {
+            steps {
+                // Run the .NET test container attached to the compose network
+            sh """
+                docker run --rm \
+                --network test-net \
+                -v "${WORKSPACE}:/app" \
+                -w /app/SeleniumWebFramework.Tests \
+                -e SELENIUM_REMOTE_URL=http://selenium-hub:4444 \
+                mcr.microsoft.com/dotnet/sdk:10.0 \
+                dotnet test --logger "console;verbosity=detailed"
+            """
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker compose -p selenium-grid -f docker-compose.selenium.yml down -v || true'
+            sh 'docker run --rm -v "${WORKSPACE}:/app" -w /app mcr.microsoft.com/dotnet/sdk:10.0 chmod -R 777 .'
+            allure([
+                includeProperties: false,
+                jdk: '',
+                commandline: 'allure',
+                results: [
+                    [path: 'SeleniumWebFramework.Tests/bin/Debug/net10.0/allure-results'],
+                    [path: 'SeleniumWebFramework.Tests/allure-results']
+                ]
+            ])
+        }
+    }
+}
